@@ -1,0 +1,18 @@
+body{
+	font-family: "Roboto", Helvetica, Arial, sans-serif !important;
+	font-size:17px;
+	overflow-x:hidden;
+	background-color:#fff;
+	color:rgba(0,0,0,0.71);
+	background-image:url('../img/bg.jpg');
+	background-size:cover;
+	background-attachment:fixed;
+}
+
+/*CUSTOM CLASS*/
+.wrap{
+	max-width:1180px;
+	margin:0 auto;
+	padding:15px;
+	border:1px solid black;
+}

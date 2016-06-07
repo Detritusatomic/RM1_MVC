@@ -1,18 +1,34 @@
 body{
 	font-family: "Roboto", Helvetica, Arial, sans-serif !important;
-	font-size:17px;
+	font-size:15px;
 	overflow-x:hidden;
 	background-color:#fff;
 	color:rgba(0,0,0,0.71);
-	background-image:url('../img/bg.jpg');
-	background-size:cover;
+	/*background-image:url('../img/bg.jpg');
+	*/background-size:cover;
 	background-attachment:fixed;
 }
 
 /*CUSTOM CLASS*/
+.justify{
+	text-align:justify;
+}
 .wrap{
 	max-width:1180px;
 	margin:0 auto;
 	padding-left:15px;
 	padding-right:15px;
+}
+
+/*CUSTOM ID*/
+#debug{
+	width:100%;
+	right:98%;
+	bottom:0;
+	position:fixed;
+	transition:.1s;
+}
+#debug.show{
+	right:0;
+	transition:.2s;
 }

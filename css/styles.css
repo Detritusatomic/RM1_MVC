@@ -13,6 +13,6 @@ body{
 .wrap{
 	max-width:1180px;
 	margin:0 auto;
-	padding:15px;
-	border:1px solid black;
+	padding-left:15px;
+	padding-right:15px;
 }

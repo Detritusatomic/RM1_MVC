@@ -1,10 +1,11 @@
 <?php
 
 /*CONSOLE*/
-$debugger=TRUE;
+define('DEBUGGER',TRUE);
 
 /*INFOS SITE*/
-define('URL','http://127.0.0.1/rm1/');
+define('URL','http://127.0.0.1/RM1_MVC/');
+define('URL2','/RM1_MVC/');
 define('TITRE','TITRE DU SITE');
 define('DESCRIPTION','DESCRIPTION DU SITE');
 

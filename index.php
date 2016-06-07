@@ -7,7 +7,13 @@ require_once './Class/Database.class.php';
 $database=Database::getInstance();
 
 /*Les classes*/
+require_once './class/Controleur.class.php';
 require_once './Class/Entite.class.php';
+
+/*Les controleurs*/
+require_once './class/controleurs/indexControleur.class.php';
+
+/*Les entites*/
 require_once './Class/entites/UserEntity.class.php';
 
 
@@ -15,15 +21,12 @@ require_once './Class/entites/UserEntity.class.php';
 require_once './Class/Session.class.php';
 $session=Session::getInstance();
 
-/*Le site*/
-require_once './views/_templates/header.php';
-if($debugger==true)require_once './views/_templates/debugger.php';
-require_once './views/_templates/menu.php';
-require_once './views/accueil.php';
-require_once './views/_templates/footer.php';
-
+/*Le moteur du site*/
+require_once 'Moteur.class.php';
+$moteur = new Moteur();
+$moteur->run();
 
 /*Clear session*/
-$session->destroy();
+/*$session->destroy();*/
 
 ?>

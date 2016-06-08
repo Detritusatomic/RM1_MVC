@@ -20,6 +20,14 @@
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
+/*FIX COL ET ROWS*/
+.row{
+	padding:0 0.75rem!important;
+	margin:0 -0.75rem 15px -0.75rem!important;
+}
+.col{
+	padding:0 0.75rem!important;
+}
 
 /*HELPERS MARGINS*/
 .no-margin{

@@ -26,8 +26,8 @@ class Entite {
 		$sql.="')";
 		$req = $database->prepare($sql);
         $req->execute();
-		if($req){
-			$this->id=$this->get('id','mail',$this->mail)['id'];
+		if($req->rowCount()>=1){
+			$this->id=$this->getMaxId();
 			return true;
 		}
 		return false;
@@ -76,6 +76,14 @@ class Entite {
         $req = $database->prepare($sql);
         $req->execute();
         return $req->fetch(PDO::FETCH_ASSOC);
+	}
+	
+	public function getMaxId(){
+		$sql = "SELECT MAX id from ".$this->table;
+        $database = Database::getInstance();
+        $req = $database->prepare($sql);
+        $req->execute();
+        return $req->fetch(PDO::FETCH_ASSOC)['id'];
 	}
 }
 ?>

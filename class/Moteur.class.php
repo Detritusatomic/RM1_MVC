@@ -7,7 +7,7 @@ class Moteur {
 	private $id;
 	private $url;
 	
-    public function __construct($controleur='index',$methode='index') {
+    public function __construct($controleur='page',$methode='home') {
 		$this->controleur=$controleur;
 		$this->methode=$methode;
 		foreach ($_GET as $key=>$get){
@@ -23,12 +23,12 @@ class Moteur {
 				$controller_name = $this->controleur.'Controleur';
                 $controleur = new $controller_name();
 				$controllerMethod = $this->methode ;
-				$controleur->$controllerMethod($this);
+				$controleur->$controllerMethod();
 				return true;
             }
 		}
-		require_once './class/controleurs/indexControleur.class.php';
-		$controleur = new indexControleur();
+		require_once './class/controleurs/pageControleur.class.php';
+		$controleur = new pageControleur();
 		$controleur->notFound();
 	}
 }

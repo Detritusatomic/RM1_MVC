@@ -11,15 +11,17 @@ class User extends Entite {
     public $id;
     public $nom;
     public $prenom;
+    public $pseudo;
     public $mail;
     public $mdp;
     public $avatar;
     public $droit;
 
-    public function __construct($nom,$prenom,$mail,$mdp,$avatar,$droit=0) {
+    public function __construct($nom,$prenom,$pseudo,$mail,$mdp,$avatar,$droit=0) {
         parent::__construct('users',__CLASS__);
 		$this->nom=$nom;
 		$this->prenom=$prenom;
+		$this->pseudo=$pseudo;
 		$this->mail=$mail;
 		$this->mdp=$mdp;
 		$this->avatar=$avatar;

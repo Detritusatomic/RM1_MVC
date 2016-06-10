@@ -10,9 +10,6 @@ $database=Database::getInstance();
 require_once './class/Controleur.class.php';
 require_once './class/Entite.class.php';
 
-/*Les controleurs*/
-require_once './class/controleurs/pageControleur.class.php';
-
 /*Les entites*/
 require_once './class/entites/UserEntity.class.php';
 

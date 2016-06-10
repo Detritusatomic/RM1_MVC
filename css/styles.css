@@ -33,25 +33,29 @@ body{
 #loginform .input-field label {
 	color: #fff
 }
-#logslabel:after{
+#logslabel:after,#maillabel:after{
 	width:100%!important;
 	height:100%!important;
 	opacity:0!important;
 }
-#logs:focus+#logslabel.errorlogs.logspseudo:after{
+#logslabel.errorlogs.logspseudo:after{
 	content:"Pseudo non valide"!important;
 	opacity:1!important;
 }
-#logs:focus+#logslabel.errorlogs.logsmail:after{
+#logslabel.errorlogs.logsmail:after{
 	opacity:1!important;
 	content:"Mail non valide"!important;
 }
-#logs:focus+#logslabel.successlogs.logspseudo:after{
+#logslabel.successlogs.logspseudo:after{
 	content:"Pseudo valide"!important;
 	opacity:1!important;
 }
-#logs:focus+#logslabel.successlogs.logsmail:after{
+#logslabel.successlogs.logsmail:after{
 	opacity:1!important;
 	content:"Mail valide"!important;
+}
+#maillabel.mailexiste:after{
+	opacity:1!important;
+	content:"Déjà utilisé"!important;
 }
 

@@ -7,11 +7,11 @@
 	</div>
 	<div class="row">
 		<div class="col m6 s12 offset-m3">
-			<form id="registerform" method="post" action="registerNewUser">
+			<form id="registerform" method="post" action="form/register">
 				<div class="input-field col s12">
 					<i class="prefix material-icons">email</i>
-					<input type="email" id="mail" name="mail" required>
-					<label for="mail">Adresse mail</label>
+					<input type="email" id="mail" name="mail" <?php if(isset($VARIABLES['mail']))echo ('value="'.$VARIABLES['mail'].'"');?> required>
+					<label id="maillabel" for="mail">Adresse mail</label>
 				</div>
 				<div class="input-field col s12">
 					<i class="prefix material-icons">lock</i>

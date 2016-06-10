@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col s12">
 				<h4 class="center">Login</h4><br/>
-				<form id="loginform" method="post" action="login">
+				<form id="loginform" method="post" action="form/login">
 					<div class="input-field">
 						<i class="prefix material-icons">email</i>
 						<input type="text" id="logs" name="logs" required>

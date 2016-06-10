@@ -28,6 +28,12 @@ class Controleur {
 		}
 	}
 	
+	public function getPostValue($key) {
+        if (isset($_POST[$key]))
+            return htmlspecialchars($_POST[$key]);
+        else
+            return null;
+    }
 	
 }
 ?>

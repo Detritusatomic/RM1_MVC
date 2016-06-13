@@ -1,5 +1,5 @@
 <!--DEBUG START-->
-<div id="debug" class="card white padding-m no-margin-b">
+<div id="debug" class="card white padding-m no-margin-b zztop">
 	<h4 class="center">Debugger</h4>
 	<div class="row">
 		<h5>GET</h5>

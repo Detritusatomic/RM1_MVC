@@ -17,7 +17,7 @@ class User extends Entite {
     public $avatar;
     public $droit;
 
-    public function __construct($nom,$prenom,$pseudo,$mail,$mdp,$avatar,$droit=0) {
+    public function __construct($nom=null,$prenom=null,$pseudo=null,$mail=null,$mdp=null,$avatar=null,$droit=0) {
         parent::__construct('users',__CLASS__);
 		$this->nom=$nom;
 		$this->prenom=$prenom;
@@ -113,5 +113,9 @@ class User extends Entite {
     public function setToken($token) {
         $this->token = $token;
     }
+	
+	public function getCurrentUser(){
+		return $this->getBy('id',$_SESSION['user']->id);
+	}
 
 }

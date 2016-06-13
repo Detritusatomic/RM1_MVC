@@ -17,6 +17,9 @@ body{
 	max-width:1180px;
 	margin:0 auto;
 }
+.zztop{
+	z-index:100;
+}
 
 /*CUSTOM ID*/
 #debug{

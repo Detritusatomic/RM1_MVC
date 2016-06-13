@@ -13,7 +13,6 @@ class FormControleur extends Controleur{
 				$mdp = password_hash($mdp, PASSWORD_BCRYPT, ['cost' => 10]);
 				$user=New User(null,null,null,$mail,$mdp,null);
 				if(!$user->getBy('mail',$mail)){
-					
 					if($user->save()==true){
 						$variables['feedback']['success']='Vous êtes inscrits, vous pouvez maintenant vous connecter.';
 					}else{
@@ -34,5 +33,28 @@ class FormControleur extends Controleur{
 		}
 		$this->loadVue('_templates/register',$variables);
     }
+	public function login(){
+		$variables=array();
+	
+		$logs=$this->getPostValue('logs');
+		$mdp=$this->getPostValue('mdp');
+		
+		$user=new User();
+		$user=$user->getBy('mail',$logs);
+		
+		if($user!=false){		
+			if(password_verify($mdp, $user->mdp)){
+				$session=Session::getInstance();
+				$session->__set('user',$user);
+				$variables['feedback']['success']='Vous êtes maintenant connecté.';
+			}else{
+				$variables['feedback']['error']='Mot de passe est incorrect.';
+			}
+		}else{
+			$variables['feedback']['error']='Adresse mail incorrecte.';
+		}
+		
+		$this->loadVue('accueil',$variables);
+	}
 }
 ?>

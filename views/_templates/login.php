@@ -9,7 +9,7 @@
 						<i class="prefix material-icons">email</i>
 						<input type="text" id="logs" name="logs" required>
 						<label for="logs" id="logslabel">Adresse mail ou pseudo</label>
-					</div>
+					</div><br/>
 					<div class="input-field">
 						<i class="prefix material-icons">lock</i>
 						<input type="password" id="mdp" name="mdp" required>

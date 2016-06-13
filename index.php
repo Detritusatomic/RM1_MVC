@@ -2,6 +2,10 @@
 /*La config*/
 require_once './config/config.php';
 
+/*La session*/
+require_once './class/Session.class.php';
+$session=Session::getInstance();
+
 /*La BD*/
 require_once './Class/Database.class.php';
 $database=Database::getInstance();
@@ -13,9 +17,6 @@ require_once './class/Entite.class.php';
 /*Les entites*/
 require_once './class/entites/UserEntity.class.php';
 
-/*La session*/
-require_once './class/Session.class.php';
-$session=Session::getInstance();
 
 /*Le moteur du site*/
 require_once './class/Moteur.class.php';

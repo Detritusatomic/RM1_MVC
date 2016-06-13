@@ -73,7 +73,9 @@ class Entite {
         $sql = 'SELECT * FROM ' . $this->table . ' WHERE '.$param.'="' . $value.'"';
         $database = Database::getInstance();
         $req = $database->prepare($sql);
-        return $req->execute();
+        $req->execute();
+		if($req->rowCount()>1)return $req->fetchAll(PDO::FETCH_OBJ);
+		return $req->fetch(PDO::FETCH_OBJ);
         
     }
 	

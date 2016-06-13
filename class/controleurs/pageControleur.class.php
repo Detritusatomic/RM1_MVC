@@ -5,24 +5,22 @@ class PageControleur extends Controleur{
         $this->loadVue('accueil',$variables);
     }
 	
-	public function login($variables=null){
-        $this->loadVue('accueil',$variables);
-    }
-	
 	public function register($variables=null){
         $this->loadVue('_templates/register',$variables);
     }
 	
-	public function registerNewUser($variables=null){
+	public function profil($variables=null){
+        $this->loadVue('profil',$variables);
+	}
+	
+	public function logout($variables=null){
 		$variables=array();
-		$mail=$_POST['mail'];
-		$mdp=$_POST['mdp'];
-		$mdp = password_hash($mdp, PASSWORD_BCRYPT, ['cost' => 10]);
-		$user=New User('','','',$mail,$mdp,'');
-		if($user->save()==true)$variables['feedback']['success']='Vous êtes inscrits, vous pouvez maintenant vous connecter.';
-		else $variables['feedback']['error']='L\'inscription a échoué';
-        $this->loadVue('_templates/register',$variables);
-    }
+		$session=Session::getInstance();
+		$session->destroy();
+		$session=Session::getInstance();
+		$variables['feedback']['success']='Vous êtes déconnecté.';
+        $this->loadVue('accueil',$variables);
+	}
 	
     public function notFound($variables=null){
         $this->loadVue('_templates/404',$variables);

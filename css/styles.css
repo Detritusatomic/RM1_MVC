@@ -10,6 +10,9 @@ body{
 }
 
 /*CUSTOM CLASS*/
+.filler{
+	min-height:50px;
+}
 .justify{
 	text-align:justify;
 }
@@ -36,29 +39,3 @@ body{
 #loginform .input-field label {
 	color: #fff
 }
-#logslabel:after,#maillabel:after{
-	width:100%!important;
-	height:100%!important;
-	opacity:0!important;
-}
-#logslabel.errorlogs.logspseudo:after{
-	content:"Pseudo non valide"!important;
-	opacity:1!important;
-}
-#logslabel.errorlogs.logsmail:after{
-	opacity:1!important;
-	content:"Mail non valide"!important;
-}
-#logslabel.successlogs.logspseudo:after{
-	content:"Pseudo valide"!important;
-	opacity:1!important;
-}
-#logslabel.successlogs.logsmail:after{
-	opacity:1!important;
-	content:"Mail valide"!important;
-}
-#maillabel.mailexiste:after{
-	opacity:1!important;
-	content:"Déjà utilisé"!important;
-}
-

@@ -6,6 +6,8 @@
 		<div class="col s12"><?php var_dump($_GET)?></div>
 		<h5>POST</h5>
 		<div class="col s12"><?php var_dump($_POST)?></div>
+		<h5>FILES</h5>
+		<div class="col s12"><?php var_dump($_FILES)?></div>
 		<h5>SESSION</h5>
 		<div class="col s12"><?php var_dump($_SESSION)?></div>
 	</div>

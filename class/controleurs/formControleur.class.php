@@ -56,5 +56,44 @@ class FormControleur extends Controleur{
 		
 		$this->loadVue('accueil',$variables);
 	}
+	
+	public function editProfil(){
+		$variables=array();
+		
+		$nom=$this->getPostValue('nom');
+		$prenom=$this->getPostValue('prenom');
+		$pseudo=$this->getPostValue('pseudo');
+		
+		if(isset($_FILES['avatar']) && $_FILES['avatar']['name']!=''){
+			if($_SESSION['user']->avatar=='' || unlink($_SESSION['user']->avatar)){
+				$upload=new Upload();
+				$avatar=$upload->uploader($_FILES['avatar'],AVATAR_UPLOAD_DIR);
+				if($avatar){
+					$user=new User($nom,$prenom,$pseudo,$_SESSION['user']->mail,$_SESSION['user']->mdp,AVATAR_UPLOAD_DIR.$avatar,$_SESSION['user']->droit,$_SESSION['user']->id);
+					if($user->update()){
+						$session=Session::getInstance();
+						$session->__set('user',$user);
+						$variables['feedback']['success']='Profil mis à jour.';
+					}else{
+						$variables['feedback']['error']='Erreur lors de la mise à jour du profil.';
+					}	
+				}else{
+					$variables['feedback']['error']='L\'image doit être au format png,jpg,gif,jpeg et doit faire moins de 2Mo.';
+				}
+			}else{			
+				$variables['feedback']['error']='Erreur lors de la suppression de l\'ancien avatar.';
+			}
+		}else{
+			$user=new User($nom,$prenom,$pseudo,$_SESSION['user']->mail,$_SESSION['user']->mdp,$_SESSION['user']->avatar,$_SESSION['user']->droit,$_SESSION['user']->id);
+			if($user->update()){
+				$session=Session::getInstance();
+				$session->__set('user',$user);
+				$variables['feedback']['success']='Profil mis à jour.';
+			}else{
+				$variables['feedback']['error']='Erreur lors de la mise à jour du profil.';
+			}
+		}
+		$this->loadVue('profil',$variables);
+	}
 }
 ?>

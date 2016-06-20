@@ -10,8 +10,8 @@
 			<form id="registerform" method="post" action="form/register">
 				<div class="input-field">
 					<i class="prefix material-icons">email</i>
-					<input type="email" id="mail" name="mail" <?php if(isset($VARIABLES['mail']))echo ('value="'.$VARIABLES['mail'].'"');?> required>
-					<label id="maillabel" for="mail">Adresse mail</label>
+					<input type="email" id="mail" name="mail" class="validate" <?php if(isset($VARIABLES['mail']))echo ('value="'.$VARIABLES['mail'].'"');?> required>
+					<label for="mail" data-error="non valide" data-success="valide">Adresse mail</label>
 				</div><br/>
 				<div class="input-field">
 					<i class="prefix material-icons">lock</i>

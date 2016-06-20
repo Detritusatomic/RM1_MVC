@@ -31,9 +31,11 @@ input:-webkit-autofill {
 	-webkit-text-fill-color: inherit !important;
 }
 /*VCENTER FIX*/
-.vcenter{
-	display:flex;
-	align-items:center;
+@media only screen and (min-width: 992px){
+	.vcenter{
+		display:flex;
+		align-items:center;
+	}
 }
 /*FIX COL ET ROWS*/
 .row{

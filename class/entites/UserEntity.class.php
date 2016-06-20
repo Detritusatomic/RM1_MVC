@@ -17,7 +17,7 @@ class User extends Entite {
     public $avatar;
     public $droit;
 
-    public function __construct($nom=null,$prenom=null,$pseudo=null,$mail=null,$mdp=null,$avatar=null,$droit=0) {
+    public function __construct($nom=null,$prenom=null,$pseudo=null,$mail=null,$mdp=null,$avatar=null,$droit=0,$id=null) {
         parent::__construct('users',__CLASS__);
 		$this->nom=$nom;
 		$this->prenom=$prenom;
@@ -26,6 +26,7 @@ class User extends Entite {
 		$this->mdp=$mdp;
 		$this->avatar=$avatar;
 		$this->droit=$droit;
+		$this->id=$id;
     }
 
 

@@ -41,7 +41,6 @@ class Entite {
     }
 	
 	public function update(){
-		$this->id=$this->get('id','mail',$this->mail)['id'];
 		$sql = "update `".$this->table."` SET ";
         $database = Database::getInstance();
 		$cols=$database->query('show columns from '.$this->table)->fetchAll(PDO::FETCH_COLUMN);
@@ -56,8 +55,8 @@ class Entite {
 		$sql.=" where `id`='".$this->id."'";
 		
 		$req = $database->prepare($sql);
-		
-		return $req->execute();
+		$req->execute();
+		return $req->rowCount()==1;
 	}
 
 	

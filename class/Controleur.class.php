@@ -21,10 +21,12 @@ class Controleur {
 	public function getFeedback($variables){
 		if(!FEEDBACK)return;
 		if(isset($variables['feedback']['success'])){
-			echo '<div class="card teal"><div class="card-content white-text center">'.$variables['feedback']['success'].'</div></div>';
+			echo '<a id="feedback" onclick="Materialize.toast(`'.$variables['feedback']['success'].'`,5000,`teal`)" hidden>Feedback</a>';
+			echo '<script type="text/javascript">function feedback(){document.getElementById("feedback").click();}feedback();</script>';
 		}
 		if(isset($variables['feedback']['error'])){
-			echo '<div class="card red lignthen-1"><div class="card-content white-text center">'.$variables['feedback']['error'].'</div></div>';
+			echo '<a id="feedback" onclick="Materialize.toast(`'.$variables['feedback']['error'].'`,5000,`red`)" hidden>Feedback</a>';
+			echo '<script type="text/javascript">function feedback(){document.getElementById("feedback").click();}feedback();</script>';
 		}
 	}
 	

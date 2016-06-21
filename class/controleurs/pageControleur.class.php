@@ -10,7 +10,8 @@ class PageControleur extends Controleur{
     }
 	
 	public function profil($variables=null){
-        $this->loadVue('profil',$variables);
+		if(isset($_SESSION['user']))$this->loadVue('profil',$variables);
+		else $this->loadVue('accueil',$variables);
 	}
 	
 	public function logout($variables=null){

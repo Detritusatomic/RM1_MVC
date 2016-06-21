@@ -37,6 +37,9 @@ input:-webkit-autofill {
 		align-items:center;
 	}
 }
+.vcenter.center{
+	justify-content:center;
+}
 /*FIX COL ET ROWS*/
 .row{
 	margin:0 -0.75rem 15px -0.75rem!important;
@@ -49,11 +52,17 @@ input:-webkit-autofill {
 .no-margin{
 	margin:0!important;
 }
+.no-margin-t{
+	margin-top:0!important;
+}
+.no-margin-r{
+	margin-right:0!important;
+}
 .no-margin-b{
 	margin-bottom:0!important;
 }
-.no-margin-t{
-	margin-top:0!important;
+.no-margin-l{
+	margin-left:0!important;
 }
 .no-margin-v{
 	margin-top:0!important;
@@ -62,6 +71,102 @@ input:-webkit-autofill {
 .no-margin-h{
 	margin-left:0!important;
 	margin-right:0!important;
+}
+
+.margin-xs{
+	margin:5px!important;
+}
+.margin-xs-t{
+	margin-top:5px!important;
+}
+.margin-xs-r{
+	margin-right:5px!important;
+}
+.margin-xs-b{
+	margin-bottom:5px!important;
+}
+.margin-xs-l{
+	margin-left:5px!important;
+}
+.margin-xs-v{
+	margin-top:5px!important;
+	margin-bottom:5px!important;
+}
+.margin-xs-h{
+	margin-right:5px!important;
+	margin-left:5px!important;
+}
+
+.margin-s{
+	margin:10px!important;
+}
+.margin-s-t{
+	margin-top:10px!important;
+}
+.margin-s-r{
+	margin-right:10px!important;
+}
+.margin-s-b{
+	margin-bottom:10px!important;
+}
+.margin-s-l{
+	margin-left:10px!important;
+}
+.margin-s-v{
+	margin-top:10px!important;
+	margin-bottom:10px!important;
+}
+.margin-s-h{
+	margin-right:10px!important;
+	margin-left:10px!important;
+}
+
+.margin-m{
+	margin:15px!important;
+}
+.margin-m-t{
+	margin-top:15px!important;
+}
+.margin-m-r{
+	margin-right:15px!important;
+}
+.margin-m-b{
+	margin-bottom:15px!important;
+}
+.margin-m-l{
+	margin-left:15px!important;
+}
+.margin-m-v{
+	margin-top:15px!important;
+	margin-bottom:15px!important;
+}
+.margin-m-h{
+	margin-right:15px!important;
+	margin-left:15px!important;
+}
+
+.margin-l{
+	margin:20px!important;
+}
+.margin-l-t{
+	margin-top:20px!important;
+}
+.margin-l-r{
+	margin-right:20px!important;
+}
+.margin-l-b{
+	margin-bottom:20px!important;
+}
+.margin-l-l{
+	margin-left:20px!important;
+}
+.margin-l-v{
+	margin-top:20px!important;
+	margin-bottom:20px!important;
+}
+.margin-l-h{
+	margin-right:20px!important;
+	margin-left:20px!important;
 }
 
 /*HELPERS PADDINGS*/

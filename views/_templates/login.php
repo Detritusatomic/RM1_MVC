@@ -1,9 +1,11 @@
 <!--MODAL LOGIN START-->
-<div id="loginmodal" class="modal red lighten-3 white-text">
+<div id="loginmodal" class="modal">
+	<div class="red lighten-3 vcenter center">
+		<h4 class="center white-text margin-s">Login</h4>
+	</div>
 	<div class="modal-content">
 		<div class="row">
 			<div class="col s12">
-				<h4 class="center">Login</h4><br/>
 				<form id="loginform" method="post" action="form/login">
 					<div class="input-field">
 						<i class="prefix material-icons">email</i>
@@ -16,7 +18,7 @@
 						<label for="mdp">Mot de passe</label>
 					</div>
 					<div class="input-field center">
-						<button type="submit" class="btn white red-text text-lighten-2 z-depth-0 waves-effect waves-dark">se connecter</button>
+						<button type="submit" class="btn red lighten-2 z-depth-0 waves-effect waves-dark">se connecter</button>
 					</div>
 				</form>
 			</div>

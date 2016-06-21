@@ -40,7 +40,10 @@ class FormControleur extends Controleur{
 		$mdp=$this->getPostValue('mdp');
 		
 		$user=new User();
-		$user=$user->getBy('mail',$logs);
+		$user1=$user->getBy('mail',$logs);
+		$user2=$user->getBy('pseudo',$logs);
+
+		$user1==false?$user=$user2:$user=$user1;
 		
 		if($user!=false){		
 			if(password_verify($mdp, $user->mdp)){
@@ -51,9 +54,8 @@ class FormControleur extends Controleur{
 				$variables['feedback']['error']='Mot de passe est incorrect.';
 			}
 		}else{
-			$variables['feedback']['error']='Adresse mail incorrecte.';
+			$variables['feedback']['error']='Adresse mail incorrecte ou pseudo incorrect.';
 		}
-		
 		$this->loadVue('accueil',$variables);
 	}
 	
@@ -68,17 +70,13 @@ class FormControleur extends Controleur{
 			if($_SESSION['user']->avatar=='' || unlink($_SESSION['user']->avatar)){
 				$upload=new Upload();
 				$avatar=$upload->uploader($_FILES['avatar'],AVATAR_UPLOAD_DIR);
-				if($avatar){
-					$user=new User($nom,$prenom,$pseudo,$_SESSION['user']->mail,$_SESSION['user']->mdp,AVATAR_UPLOAD_DIR.$avatar,$_SESSION['user']->droit,$_SESSION['user']->id);
-					if($user->update()){
-						$session=Session::getInstance();
-						$session->__set('user',$user);
-						$variables['feedback']['success']='Profil mis à jour.';
-					}else{
-						$variables['feedback']['error']='Erreur lors de la mise à jour du profil.';
-					}	
+				$user=new User($nom,$prenom,$pseudo,$_SESSION['user']->mail,$_SESSION['user']->mdp,$avatar,$_SESSION['user']->droit,$_SESSION['user']->id);
+				if($user->update()){
+					$session=Session::getInstance();
+					$session->__set('user',$user);
+					$variables['feedback']['success']='Profil mis à jour.';
 				}else{
-					$variables['feedback']['error']='L\'image doit être au format png,jpg,gif,jpeg et doit faire moins de 2Mo.';
+					$variables['feedback']['error']='Erreur lors de la mise à jour du profil.';	
 				}
 			}else{			
 				$variables['feedback']['error']='Erreur lors de la suppression de l\'ancien avatar.';
@@ -89,8 +87,6 @@ class FormControleur extends Controleur{
 				$session=Session::getInstance();
 				$session->__set('user',$user);
 				$variables['feedback']['success']='Profil mis à jour.';
-			}else{
-				$variables['feedback']['error']='Erreur lors de la mise à jour du profil.';
 			}
 		}
 		$this->loadVue('profil',$variables);

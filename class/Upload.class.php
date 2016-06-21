@@ -12,7 +12,11 @@ class Upload {
                 if ($img_size <= $this->image_size) {
                     $nomImage = md5(uniqid()) . '.' . $extension;
                     if (move_uploaded_file($file['tmp_name'], $dest . $nomImage)) {
-                        return $nomImage;
+						$imagecache=new ImageCache();
+						$imagecache->cached_image_directory=$dest;
+						$cached_src=$imagecache->cache($dest.$nomImage);
+						unlink($dest.$nomImage);
+                        return $cached_src;
                     } 
 				} 
 			} 

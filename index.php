@@ -10,6 +10,7 @@ $database=Database::getInstance();
 /*Les classes*/
 require_once './class/Controleur.class.php';
 require_once './class/Entite.class.php';
+require_once './class/ImageCache.class.php';
 require_once './class/Upload.class.php';
 
 /*Les entites*/

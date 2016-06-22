@@ -14,7 +14,7 @@
 				<div class="card-content">
 					<div class="row">
 						<div class="col l2 m6 offset-m3 s12 center">
-							<img src="<?php if($session->__get('user')->avatar!='')echo $session->__get('user')->avatar;else echo'img/avatar/default.png';?>" alt="profile image" class="circle z-depth-2 responsive-img">
+							<img id="avatar" src="<?php if($session->__get('user')->avatar!='')echo $session->__get('user')->avatar;else echo'img/avatar/default.png';?>" alt="profile image" class="circle z-depth-2 responsive-img">
 						</div>          
 						<div class="col l5 m6">                  
 							<h4 class="grey-text text-darken-3 no-margin-b">
@@ -41,39 +41,39 @@
 			<div class="col s12">
 				<h4 class="center">Modifier votre profil</h4><br/>
 				<form id="editprofilform" method="post" action="form/editProfil" enctype="multipart/form-data">
-					<div class="input-field">
+					<div class="input-field col l6 s12">
 						<input type="text" id="nom" name="nom" value="<?=$session->__get('user')->nom?>">
 						<label for="nom">Nom</label>
-					</div><br/>
-					<div class="input-field">
+					</div>
+					<div class="input-field col l6 s12">
 						<input type="text" id="prenom" name="prenom" value="<?=$session->__get('user')->prenom?>">
 						<label for="prenom">Prénom</label>
-					</div><br/>
-					<div class="input-field">
+					</div>
+					<div class="input-field col s12">
 						<input type="text" id="pseudo" name="pseudo" value="<?=$session->__get('user')->pseudo?>">
 						<label for="pseudo">Pseudo</label>
 					</div><br/>
-					<div class="file-field input-field">
-						<div class="row vcenter">
-							<div class="col l2 s12">
-								<img src="<?php if($session->__get('user')->avatar!='')echo $session->__get('user')->avatar;else echo'img/avatar/default.png';?>" alt="profile image" class="circle z-depth-2 responsive-img">
-							</div>
-							<div class="col l2 s6 center">
-								<div class="btn red">
-									<span>Avatar</span>
-									<input type="file" name="avatar">
-								</div>
-							</div>
-							<div class="col l8 s6">
-								<div class="file-path-wrapper">
-									<input type="text" class="file-path validate">
-								</div>
-							</div>
+					<div class="file-field input-field col l6 s12">
+						<div class="row center">
+							<img id="current_avatar" src="<?php if($session->__get('user')->avatar!='')echo $session->__get('user')->avatar;else echo'img/avatar/default.png';?>" alt="profile image" class="circle z-depth-2 responsive-img">
 						</div>
-						<div class="input-field">
-							<button type="submit" class="btn red lighten-2 z-depth-0 waves-effect waves-dark">Valider</button>
+						<div class="col s5">
+							<div class="btn red">
+								<span>Image</span>
+								<input id="image_avatar" type="file" name="avatar">
+							</div>							
+						</div>
+						<div class="col s7">
+							<div class="file-path-wrapper">
+								<input type="text" class="file-path validate">
+							</div>
 						</div>
 					</div>
+					<div class="col l6 s12">
+						<div id="crop_avatar"></div>
+					</div>
+					<input id="cropped_avatar" name="cropped_avatar" type="hidden" value="<?php if($session->__get('user')->avatar!='')echo $session->__get('user')->avatar;else echo'img/avatar/default.png';?>">
+					<button id="valider_avatar" class="btn teal z-depth-0 waves-effect waves-dark">Valider</button>
 				</form>
 			</div>
 		</div>

@@ -1,27 +1,17 @@
 <?php
 class Upload {
 
-    public $image_accepted = array('jpg', 'jpeg', 'gif', 'png');
-    public $image_size = 2000000;
-
-    public function uploader($file,$dest) {
-        if (isset($file['tmp_name'])) {
-            $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-            if (in_array(strtolower($extension), $this->image_accepted)) {
-                $img_size = filesize($file['tmp_name']);
-                if ($img_size <= $this->image_size) {
-                    $nomImage = md5(uniqid()) . '.' . $extension;
-                    if (move_uploaded_file($file['tmp_name'], $dest . $nomImage)) {
-						$imagecache=new ImageCache();
-						$imagecache->cached_image_directory=$dest;
-						$cached_src=$imagecache->cache($dest.$nomImage);
-						unlink($dest.$nomImage);
-                        return $cached_src;
-                    } 
-				} 
-			} 
+    public function uploader($file,$dest,$crop=true) {
+		if($crop){
+			$data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $file));
+			$temp='img/avatar/temp'.md5(uniqid()).'.png';
+			file_put_contents($temp,$data);
+			$imagecache=new ImageCache();
+			$imagecache->cached_image_directory=$dest;
+			$cached_src=$imagecache->cache($temp);
+			unlink($temp);
+			return $cached_src;		
 		}
-		return false;		
     }
 }
 ?>

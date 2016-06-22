@@ -60,18 +60,29 @@ class FormControleur extends Controleur{
 	}
 	
 	public function editProfil(){
+		/*Definition notre array de variables a passer dans la vue*/
 		$variables=array();
 		
+		/*Récupération des valeurs POST*/
 		$nom=$this->getPostValue('nom');
 		$prenom=$this->getPostValue('prenom');
 		$pseudo=$this->getPostValue('pseudo');
 		
-		if(isset($_FILES['avatar']) && $_FILES['avatar']['name']!=''){
+		/*Si notre image existe*/
+		if(isset($_POST['cropped_avatar'])){
+			/*On récupère notre avatar*/
+			$cropped_avatar=$this->getPostValue('cropped_avatar');
+			/*Si nous n'avons pas d'avatar (celui par défault), ou si on a bien supprimé notre ancien avatar*/
 			if($_SESSION['user']->avatar=='' || unlink($_SESSION['user']->avatar)){
+				/*Création d'un upload*/
 				$upload=new Upload();
-				$avatar=$upload->uploader($_FILES['avatar'],AVATAR_UPLOAD_DIR);
+				/*On upload le fichier dans la destination*/
+				$avatar=$upload->uploader($cropped_avatar,AVATAR_UPLOAD_DIR);
+				/*Création d'un user avec les nouvelles données*/
 				$user=new User($nom,$prenom,$pseudo,$_SESSION['user']->mail,$_SESSION['user']->mdp,$avatar,$_SESSION['user']->droit,$_SESSION['user']->id);
+				/*Mise à jour de l'user dans la bdd*/
 				if($user->update()){
+					/*Maj de la session*/
 					$session=Session::getInstance();
 					$session->__set('user',$user);
 					$variables['feedback']['success']='Profil mis à jour.';
@@ -81,15 +92,9 @@ class FormControleur extends Controleur{
 			}else{			
 				$variables['feedback']['error']='Erreur lors de la suppression de l\'ancien avatar.';
 			}
-		}else{
-			$user=new User($nom,$prenom,$pseudo,$_SESSION['user']->mail,$_SESSION['user']->mdp,$_SESSION['user']->avatar,$_SESSION['user']->droit,$_SESSION['user']->id);
-			if($user->update()){
-				$session=Session::getInstance();
-				$session->__set('user',$user);
-				$variables['feedback']['success']='Profil mis à jour.';
-			}
+			/*On retourne sur la page profil*/
+			$this->loadVue('profil',$variables);
 		}
-		$this->loadVue('profil',$variables);
 	}
 }
 ?>

@@ -22,6 +22,10 @@ class PageControleur extends Controleur{
 		$variables['feedback']['success']='Vous êtes déconnecté.';
         $this->loadVue('accueil',$variables);
 	}
+    
+	public function contact($variables=null){
+        $this->loadVue('contact',$variables);
+    }
 	
     public function notFound($variables=null){
         $this->loadVue('_templates/404',$variables);

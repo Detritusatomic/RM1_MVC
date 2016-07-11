@@ -13,7 +13,7 @@ class Controleur {
 		if(DEBUGGER)require $this->url.'_templates/debugger.php';
         require $this->url.'_templates/menu.php';
 		$this->getFeedback($param);
-		if(LOGIN)require $this->url.'_templates/login.php';
+		if(LOGIN && !isset($_SESSION['user']))require $this->url.'_templates/login.php';
         require $this->url.$vue.'.php';
         require $this->url.'_templates/footer.php';
     }

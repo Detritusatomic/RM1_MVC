@@ -24,7 +24,11 @@ class Session
         } 
         return $this->sessionState;
     }
-
+	
+	public static function isAdmin(){
+		return $_SESSION['user']->droit==1;
+	}
+	
     public function __set($name,$value){
         $_SESSION[$name] = $value;
     }

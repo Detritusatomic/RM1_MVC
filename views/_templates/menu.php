@@ -10,7 +10,9 @@
 				<li><a class="dropdown-button" href="#" data-activates="profil" data-beloworigin="true" data-constrainwidth="false" data-alignment="right">Mon compte<i class="material-icons right no-margin">arrow_drop_down</i></a></li>
 				<ul id="profil" class="dropdown-content">
 					<li><a href="profil">Mon profil</a></li>
-					<li><a href="admin">Administration</a></li>
+					<?php if(Session::isAdmin()) : ?>
+					<li><a href="admin/home">Administration</a></li>
+					<?php endif;?>
 					<li class="divider"></li>
 					<li><a href="logout">Se déconnecter</a></li>
 				</ul>

@@ -77,7 +77,7 @@ class FormControleur extends Controleur{
 				/*Création d'un upload*/
 				$upload=new Upload();
 				/*On upload le fichier dans la destination*/
-				$avatar=$upload->uploader($cropped_avatar,AVATAR_UPLOAD_DIR);
+				$avatar=$upload->uploader($cropped_avatar,AVATAR_UPLOAD_DIR,true);
 				/*Création d'un user avec les nouvelles données*/
 				$user=new User($nom,$prenom,$pseudo,$_SESSION['user']->mail,$_SESSION['user']->mdp,$avatar,$_SESSION['user']->droit,$_SESSION['user']->id);
 				/*Mise à jour de l'user dans la bdd*/
